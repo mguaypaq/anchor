@@ -277,7 +277,7 @@ version(Timeout, Options) ->
     call(version, Timeout, Options).
 
 %% private
-call(Request, _Timeout, [{async, Pid}]) ->
-    shackle:cast(?APP, Request, Pid);
+call(Request, Timeout, [{async, Pid}]) ->
+    shackle:cast(?APP, Request, Pid, Timeout);
 call(Request, Timeout, _Options) ->
     shackle:call(?APP, Request, Timeout).
